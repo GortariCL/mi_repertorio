@@ -38,6 +38,7 @@ function nuevaCancion() {
     cancion;
     artista;
     tono;
+    //Validacion campos vacios
     if (cancion.value != '' && artista.value != '' && tono.value != '') {
         let data = {
             cancion: cancion.value,
@@ -71,6 +72,7 @@ function prepararCancion(i, id) {
 }
 
 function editarCancion(id) {
+    //Validacion campos vacios
     if (cancion.value != '' && artista.value != '' && tono.value != '') {
         axios
             .put(url, {
