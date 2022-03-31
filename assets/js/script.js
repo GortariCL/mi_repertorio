@@ -38,13 +38,18 @@ function nuevaCancion() {
     cancion;
     artista;
     tono;
-    let data = {
-        cancion: cancion.value,
-        artista: artista.value,
-        tono: tono.value,
-    };
-    console.log(data);
-    axios.post(url, data).then(() => getData());
+    if (cancion.value != '' && artista.value != '' && tono.value != '') {
+        let data = {
+            cancion: cancion.value,
+            artista: artista.value,
+            tono: tono.value,
+        };
+        console.log(data);
+        axios.post(url, data).then(() => getData());
+    } else {
+        alert('no pueden existir campos vacios!');
+    }
+
 }
 
 function eliminarCancion(i, id) {
@@ -66,16 +71,20 @@ function prepararCancion(i, id) {
 }
 
 function editarCancion(id) {
-    axios
-        .put(url, {
-            id: id,
-            cancion: cancion.value,
-            artista: artista.value,
-            tono: tono.value,
-        })
-        .then(() => {
-            getData();
-            document.getElementById("agregar").style.display = "block";
-            document.getElementById("editar").style.display = "none";
-        });
+    if (cancion.value != '' && artista.value != '' && tono.value != '') {
+        axios
+            .put(url, {
+                id: id,
+                cancion: cancion.value,
+                artista: artista.value,
+                tono: tono.value,
+            })
+            .then(() => {
+                getData();
+                document.getElementById("agregar").style.display = "block";
+                document.getElementById("editar").style.display = "none";
+            });
+    } else {
+        alert('no pueden existir campos vacios!');
+    }
 }
