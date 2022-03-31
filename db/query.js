@@ -23,7 +23,7 @@ const insertarCancion = async (datos) => {
 //LEER DATA DE LA TABLA (Requerimiento 2)
 const consultaCanciones = async () => {
     try{
-        const result = await pool.query('SELECT * FROM repertorio');
+        const result = await pool.query('SELECT * FROM repertorio ORDER BY id ASC');
         return result;
     }catch(err){
         console.log('Error: ', err);
